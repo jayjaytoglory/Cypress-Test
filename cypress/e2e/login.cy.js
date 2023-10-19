@@ -1,3 +1,5 @@
+import { account } from "../fixtures/test-data/data-auth";
+
 describe('Login Authentication', {testIsolation: false}, () => {
     context('Positive Test', () => {
         it('Validate Sign In Button', () => {
@@ -10,8 +12,8 @@ describe('Login Authentication', {testIsolation: false}, () => {
             cy.get('[type="password"]').should('be.visible');
         });
         it('Login with valid email', () => {
-            cy.get('[type="text"]').should('be.visible').clear().type('aldy2@gmail.com')
-            cy.get('[type="password"]').should('be.visible').clear().type('12345678')
+            cy.get('[type="text"]').should('be.visible').clear().type(account.email)
+            cy.get('[type="password"]').should('be.visible').clear().type(account.password)
             cy.get('[type="button"]').contains('Login').click()
         });
         it('Add primer to cart', () => {
