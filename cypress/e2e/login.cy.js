@@ -1,4 +1,5 @@
 import { account } from "../fixtures/test-data/data-auth";
+import fnAuth from "../support/auth/fnAuth";
 
 describe('Login Authentication', {testIsolation: false}, () => {
     context('Positive Test', () => {
@@ -12,9 +13,7 @@ describe('Login Authentication', {testIsolation: false}, () => {
             cy.get('[type="password"]').should('be.visible');
         });
         it('Login with valid email', () => {
-            cy.get('[type="text"]').should('be.visible').clear().type(account.email)
-            cy.get('[type="password"]').should('be.visible').clear().type(account.password)
-            cy.get('[type="button"]').contains('Login').click()
+            fnAuth.login_session(account.email, account.password)
         });
         it('Add primer to cart', () => {
             //cy.get('.card-title').contains('Primer')
